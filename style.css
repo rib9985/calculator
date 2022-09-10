@@ -23,7 +23,7 @@ body{
 }
 .display{
     display: flex;
-    margin-top: 10px;
+    margin-top: 20px;
  width: 25rem;
  height:8rem;
 border-radius: 60px;
@@ -51,6 +51,7 @@ border-radius: 60px;
 .clear, .delete{
     width: 10rem;
     height: 4rem;
+    margin-top: 4px;
     border-radius: 20px;
     font-size: xx-large;
     font-weight: bold;
