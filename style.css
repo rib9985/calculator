@@ -4,6 +4,9 @@ body{
     align-items: center;
     justify-content: center;
     background-color: rgb(42, 42, 42);
+    font-family: sans-serif;
+    font-weight: bold;
+    color:cadetblue;
 }
 
 .main{
@@ -21,15 +24,52 @@ body{
  
    
 }
-.display{
-    display: flex;
+
+.displayContainer{
     margin-top: 20px;
- width: 25rem;
- height:8rem;
-border-radius: 60px;
- background-color: rgba(186, 186, 186, 0.149)
+    justify-content: center;
+    align-items: flex-end;
+    display: flex;
+    border-radius: 40px; 
+    width: 25rem;
+    text-align: right;
+    word-wrap: break-word;
+    word-break: break-all;
+    height: 11rem;
+    background-color: rgba(186, 186, 186, 0.149);
+    flex-direction: column;
+    gap: 1px;
 }
-.main-buttons{
+
+#operatorScreen{
+    font-size: 30px;
+    text-align: left;
+    margin-right: 20px;
+    color:rgb(38, 160, 173)
+
+}
+
+.previousOperation{
+    min-height: 32px;
+    margin-top: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px; 
+}
+
+.currentOperation{
+min-height: 0%;
+display: flex;
+font-size: 2rem;
+margin: 20px;
+margin-top: 5px;
+flex-direction: row;
+min-width: 0;
+
+
+}
+.mainButtons{
     margin-top: 20px;
     width:90%;
     height: 75%;
@@ -60,7 +100,7 @@ border-radius: 60px;
  border-style:none;
 
 }
-.buttons{
+.buttons, .btn, .operator, .decimal, .evaluate {
     width: 5rem;
     height: 5rem;
     border-radius: 40px ;
@@ -72,7 +112,7 @@ border-radius: 60px;
     
 }
 
-.buttons:hover{
+.buttons:hover, .btn:hover{
 transition:ease-in-out 0.2s;
 font-weight: bolder;
 color: aliceblue;
@@ -87,3 +127,26 @@ color: aliceblue;
  background-image: -webkit-radial-gradient(rgba(179, 179, 179, 0.035),rgba(0, 0, 0, 0.595));
 }
 
+
+.operator:hover, .decimal:hover, .evaluate:hover{
+    transition:ease-in-out 0.2s;
+    font-weight: bolder;
+    color: rgb(16, 201, 230);
+        background-color:  rgba(23, 36, 224, 0.572);
+        background-image: -webkit-radial-gradient(rgba(179, 179, 179, 0.035),rgba(0, 0, 0, 0.595));
+}
+
+.evaluate:hover{
+    transition:ease-in-out 0.2s;
+    font-weight: bolder;
+    color: rgb(192, 254, 189);
+        background-color:  rgba(12, 176, 45, 0.116);
+        background-image: -webkit-radial-gradient(rgba(179, 179, 179, 0.035),rgba(0, 0, 0, 0.595));
+}
+
+.btn:active, .evaluate:active, .decimal:active, .operator:active, .clear:active, .delete:active{
+    transition:ease-in-out 5ms;
+    background-color: rgba(rgb(47, 17, 45), green, blue, alpha);
+    color:blueviolet;
+
+}
