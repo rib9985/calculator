@@ -11,35 +11,40 @@
 </head>
 <body>
     <div class="main">
-        <div class="display"></div>
-        <div class="extras">
-            <button class="clear">Clear</button>
-            <button class="delete">Delete</button>
+        
+        <div class="displayContainer">
+            <div class="previousOperation" id = 'previousScreen'></div>
+            <div class="currentOperator" id = 'operatorScreen'></div>
+            <div class="currentOperation" id = 'mainScreen'></div>
         </div>
-            <div class="main-buttons">
+        <div class="extras">
+            <button class="clear" id="clear">Clear</button>
+            <button class="delete" id="delete">Delete</button>
+        </div>
+            <div class="mainButtons">
                <!-- row 1 -->
-                <button class="buttons">1</button>
-                <button class="buttons">2</button>
-                <button class="buttons">3</button>
-                <button class="buttons">+</button>
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="operator">+</button>
 
                 <!-- row 2 -->
-                <button class="buttons">4</button>
-                <button class="buttons">5</button>
-                <button class="buttons">6</button>
-                <button class="buttons">-</button>
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="operator">-</button>
 
                  <!-- row 3 -->
-                 <button class="buttons">7</button>
-                 <button class="buttons">8</button>
-                 <button class="buttons">9</button>
-                 <button class="buttons">x</button>
+                 <button class="btn">7</button>
+                 <button class="btn">8</button>
+                 <button class="btn">9</button>
+                 <button class="operator">x</button>
 
                   <!-- row 4 -->
-                <button class="buttons">.</button>
-                <button class="buttons">0</button>
-                <button class="buttons">=</button>
-                <button class="buttons">/</button>
+                <button class="decimal">.</button>
+                <button class="btn">0</button>
+                <button class="evaluate" id="evaluate">=</button>
+                <button class="operator">/</button>
 
 
             </div> 
