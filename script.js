@@ -1,34 +1,146 @@
+let operator = ''
+let firstOperand = ''
+let secondOperand = ''
+let currentOperation = null
+let mustResetScreen = false
+
+
+const numberButtons = document.querySelectorAll('.btn')
+const operatorButtons = document.querySelectorAll('.operator')
+const clearButton = document.getElementById('clear')
+const evaluateButton = document.getElementById('evaluate')
+const lastOperationScreen = document.getElementById('previousScreen')
+const currentOperationScreen = document.getElementById('mainScreen')
+const operatorScreen = document.getElementById('operatorScreen')
+
+numberButtons.forEach((button) => button.addEventListener('click', ()=> addNumberToScreen(button.textContent) )
+)
+
+operatorButtons.forEach((button) => button.addEventListener('click', ()=> 
+setOperator(button.textContent)
+))
+
+evaluateButton.addEventListener ('click', () => determineOperation(operator))
+
+clearButton.addEventListener ('click', ()=> resetAllParameters())
+function resetAllParameters () {
+    currentOperation = null
+    operator = ''
+    mainScreen.textContent= ''
+    previousScreen.textContent=""
+    operatorScreen.textContent=''
+}
+    
+    
+
+
+function addNumberToScreen (number){
+    if (currentOperationScreen.textContent === 'ERR'){
+        previousScreen.textContent = ''
+        currentOperation = null
+        operator = ''}
+    
+    if (currentOperationScreen.textContent === '0' || mustResetScreen){
+        resetScreen()
+        }
+        
+    currentOperationScreen.textContent += number
+}
+
+
+
+function setOperator(op){
+    return (operator = op) && determineOperation(operator)
+}
+
+
+function determineOperation(operator){
+    
+    if (currentOperation !==""||null){
+        evaluate(operator)}
+    
+    storeOperand()
+    currentOperation = `${firstOperand}`
+    updateLastOperationScreen(operator)
+}
+
+function storeOperand(){
+    firstOperand = currentOperationScreen.textContent
+}
+
+function updateLastOperationScreen(operator){
+    lastOperationScreen.textContent = currentOperationScreen.textContent
+    operatorScreen.textContent = operator
+    mustResetScreen = true
+}
+
+function resetScreen(){
+    mainScreen.textContent=""
+    mustResetScreen = false
+}
+
+function evaluate(operator){
+
+    if (currentOperation === null || mustResetScreen){return}
+    
+    secondOperand = currentOperationScreen.textContent
+    currentOperationScreen.textContent = `${operate(firstOperand, operator, secondOperand)}`    
+    previousScreen.textContent = currentOperationScreen.textContent
+}
+
+
+function operate(firstOperand, operator, secondOperand){
+    
+    a = Number(firstOperand)
+    b = Number(secondOperand)
+    if (operator === "+"){
+    return add(a,b)
+    }
+    else if (operator === "-"){
+    return subtract(a,b)
+    }
+    else if (operator === "x"){
+        return multiply(a,b)
+    }
+    else if (operator === "/"){
+        if (b === 0 || null || undefined)
+            return 'ERR'
+        else    
+            return divide(a,b)
+    }
+    else
+    return 'ERR' 
+}
+
+
+
+
+
+
 const add = function(a,b) {
     return a + b
   };
   
-  const subtract = function(a,b) {
+const subtract = function(a,b) {
   return a - b
       
   };
   
-  const sum = function(array) {
-  return array.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
-  
-  };
-  
-  const multiply = function(array) {
+
+const multiply = function(a,b) {
     
-  return array.reduce((accumulate,nextItem) => 
-  accumulate * nextItem)
+  return a*b
   
   };
-  
-  const power = function(a,b) {
-   return a ** b
-      
-  };
-  
-  const factorial = function(a) {
-      const store = a
-    total = 1
-  for (let i = 1; i<=store; i++){
-    total*=i
+
+const divide = function (a,b){
+    return a/b
   }
-  return total
-  }
+  
+const sum = function(array) {
+    return array.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+    };
+
+
+
+
