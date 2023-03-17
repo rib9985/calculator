@@ -13,6 +13,7 @@ const lastOperationScreen = document.getElementById('previousScreen')
 const currentOperationScreen = document.getElementById('mainScreen')
 const operatorScreen = document.getElementById('operatorScreen')
 const deleteButton = document.getElementById('delete')
+const decimalButton = document.getElementById('decimal')
 
 numberButtons.forEach((button) => button.addEventListener('click', ()=> addNumberToScreen(button.textContent) )
 )
@@ -26,6 +27,8 @@ evaluateButton.addEventListener ('click', () => determineOperation(operator, tru
 clearButton.addEventListener ('click', ()=> resetAllParameters())
 
 deleteButton.addEventListener('click', ()=> removeNumberFromScreen())
+
+decimalButton.addEventListener('click', () => addNumberToScreen("."))
 
 function resetAllParameters () {
     currentOperation = null
@@ -63,17 +66,19 @@ function setOperator(op){
 
 
 function determineOperation(op, equal){
-    if (currentOperation !==""||null){
+    if (currentOperation !== (""||null)){
         evaluate(op)
       }
-      
+    
+    
     if (equal === true){
     updateLastOperationScreen('=')}
     else{
     updateLastOperationScreen(op)
     }
-
+    
     storeOperand()
+  
     currentOperation = `${firstOperand}`
     
 
@@ -127,7 +132,7 @@ function operate(firstOperand, operator, secondOperand){
         if (b === 0 || null || undefined)
             return 'ERR'
         else    
-            return divide(a,b)
+            return divide(a,b).toFixed(5)
     }
     else
     return 'ERR' 
