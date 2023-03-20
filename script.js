@@ -26,7 +26,7 @@ setOperator(button.textContent)
 evaluateButton.addEventListener ('click', () => determineOperation(operator, true))
 clearButton.addEventListener ('click', ()=> resetAllParameters())
 deleteButton.addEventListener('click', ()=> removeNumberFromScreen())
-decimalButton.addEventListener('click', () => addNumberToScreen("."))
+decimalButton.addEventListener('click', () => checkDecimal())
 
 //Resets to initial state, with no variable values and empty strings.
 function resetAllParameters () {
@@ -59,6 +59,15 @@ function addNumberToScreen (number){
     currentOperationScreen.textContent += number
 }
 
+
+function checkDecimal(){
+  const checkerScreen = currentOperationScreen.textContent
+    for (let c of checkerScreen){
+      if (c === '.'){
+        return}
+      }
+  addNumberToScreen ('.') 
+      }
 
 //Sets the Operator value globally
 function setOperator(op){
@@ -186,7 +195,7 @@ document.addEventListener('keydown', (e) => {
     });
 
 document.addEventListener('keydown', (e) => {
-      if (e.key === '.') {addNumberToScreen('.')}
+      if (e.key === '.') {checkDecimal()}
       });
 
 document.addEventListener('keydown', (e) => {
