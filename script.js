@@ -1,10 +1,11 @@
+//Initial Variables for the events
 let operator = ''
 let firstOperand = ''
 let secondOperand = ''
 let currentOperation = null
 let mustResetScreen = false
 
-
+//Grab elements from the DOM, pass them to constant variables
 const numberButtons = document.querySelectorAll('.btn')
 const operatorButtons = document.querySelectorAll('.operator')
 const clearButton = document.getElementById('clear')
@@ -15,21 +16,19 @@ const operatorScreen = document.getElementById('operatorScreen')
 const deleteButton = document.getElementById('delete')
 const decimalButton = document.getElementById('decimal')
 
+
+//Events that happen on each button click
 numberButtons.forEach((button) => button.addEventListener('click', ()=> addNumberToScreen(button.textContent) )
 )
-
 operatorButtons.forEach((button) => button.addEventListener('click', ()=> 
 setOperator(button.textContent)
 ))
-
 evaluateButton.addEventListener ('click', () => determineOperation(operator, true))
-
 clearButton.addEventListener ('click', ()=> resetAllParameters())
-
 deleteButton.addEventListener('click', ()=> removeNumberFromScreen())
-
 decimalButton.addEventListener('click', () => addNumberToScreen("."))
 
+//Resets to initial state, with no variable values and empty strings.
 function resetAllParameters () {
     currentOperation = null
     operator = ''
@@ -37,7 +36,8 @@ function resetAllParameters () {
     previousScreen.textContent=""
     operatorScreen.textContent=''
 }
-    
+
+//Removes the last number from the screen
 function removeNumberFromScreen(){
   let length = currentOperationScreen.textContent.length
   let newString = currentOperationScreen.textContent.slice(0, length -1)
@@ -45,6 +45,7 @@ function removeNumberFromScreen(){
 }    
 
 
+//Adds/Appends the number chosen to the screen.
 function addNumberToScreen (number){
     if (currentOperationScreen.textContent === 'ERR'){
         previousScreen.textContent = ''
@@ -59,12 +60,13 @@ function addNumberToScreen (number){
 }
 
 
-
+//Sets the Operator value globally
 function setOperator(op){
     return (operator = op) && determineOperation(operator, false)
 }
 
-
+//Determines how to handle the operation, and passes on the equivalent values.
+//Also stores the currentOperation
 function determineOperation(op, equal){
     if (currentOperation !== (""||null)){
         evaluate(op)
@@ -76,19 +78,16 @@ function determineOperation(op, equal){
     else{
     updateLastOperationScreen(op)
     }
-    
     storeOperand()
-  
     currentOperation = `${firstOperand}`
-    
-
-
 }
 
+//Stores the 1st Operand
 function storeOperand(){
     firstOperand = currentOperationScreen.textContent
 }
 
+//Updates the Operator screen and the Previous Operation Screen
 function updateLastOperationScreen(op){
   if (op =='='){
     lastOperationScreen.textContent = `${firstOperand} ${operator} ${secondOperand}`
@@ -100,11 +99,15 @@ function updateLastOperationScreen(op){
   mustResetScreen = true
 }
 
+
+//Resets the mainScreen content
 function resetScreen(){
     mainScreen.textContent=""
     mustResetScreen = false
 }
 
+//Evaluater function
+//Evaluates what to do once an operator is chosen.
 function evaluate(operator){
 
     if (currentOperation === null || mustResetScreen){return}
@@ -114,7 +117,8 @@ function evaluate(operator){
     previousScreen.textContent = currentOperationScreen.textContent
 }
 
-
+//Main operation function.
+// Receives the full parameters and return the value depending on the operation.
 function operate(firstOperand, operator, secondOperand){
     
     a = Number(firstOperand)
@@ -142,30 +146,53 @@ function operate(firstOperand, operator, secondOperand){
 
 
 
+//Smaller Operations
+const add = function(a,b) {return a + b};
+const subtract = function(a,b) {return a - b};
+const multiply = function(a,b) {return a*b};
+const divide = function (a,b){return a/b}
 
-const add = function(a,b) {
-    return a + b
-  };
+
+
+//Keystroke Functions
+//Registers keystrokes accordingly to each button
+
+document.addEventListener('keydown', (e) => {
+numberButtons.forEach((button) => {
+    if (e.key === button.textContent) {
+      addNumberToScreen(button.textContent);
+    }
+  });
+});
+
+document.addEventListener('keydown', (e) => {
+  operatorButtons.forEach((button) => {
+       if (e.key === button.textContent) {
+         setOperator(button.textContent)
+       }
+     });
+   });
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === '*') {setOperator('x')}
+    });
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {resetAllParameters()}
+  });
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Backspace') {removeNumberFromScreen()}
+    });
+
+document.addEventListener('keydown', (e) => {
+      if (e.key === '.') {addNumberToScreen('.')}
+      });
+
+document.addEventListener('keydown', (e) => {
+        if (e.key === '='  || e.key ===  'Enter') {determineOperation(operator, true)}
+        });
   
-const subtract = function(a,b) {
-  return a - b
-      
-  };
-  
-
-const multiply = function(a,b) {
-    
-  return a*b
-  
-  };
-
-const divide = function (a,b){
-    return a/b
-  }
-
-const sum = function(array) {
-    return array.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
-    };
 
 
 
