@@ -1,54 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="main">
-        
-        <div class="displayContainer">
-            <div class="previousOperation" id = 'previousScreen'></div>
-            <div class="currentOperator" id = 'operatorScreen'></div>
-            <div class="currentOperation" id = 'mainScreen'></div>
-        </div>
-        <div class="extras">
-            <button class="clear" id="clear">Clear</button>
-            <button class="delete" id="delete">Delete</button>
-        </div>
-            <div class="mainButtons">
-               <!-- row 1 -->
-                <button class="btn">1</button>
-                <button class="btn">2</button>
-                <button class="btn">3</button>
-                <button class="operator">+</button>
+      <div class="displayContainer">
+        <div class="previousOperation" id="previousScreen"></div>
+        <div class="currentOperator" id="operatorScreen"></div>
+        <div class="currentOperation" id="mainScreen"></div>
+      </div>
+      <div class="extras">
+        <button class="clear" id="clear">Clear</button>
+        <button class="delete" id="delete">Delete</button>
+      </div>
+      <div class="mainButtons">
+        <!-- row 1 -->
+        <button class="btn">1</button>
+        <button class="btn">2</button>
+        <button class="btn">3</button>
+        <button class="operator">+</button>
 
-                <!-- row 2 -->
-                <button class="btn">4</button>
-                <button class="btn">5</button>
-                <button class="btn">6</button>
-                <button class="operator">-</button>
+        <!-- row 2 -->
+        <button class="btn">4</button>
+        <button class="btn">5</button>
+        <button class="btn">6</button>
+        <button class="operator">-</button>
 
-                 <!-- row 3 -->
-                 <button class="btn">7</button>
-                 <button class="btn">8</button>
-                 <button class="btn">9</button>
-                 <button class="operator">x</button>
+        <!-- row 3 -->
+        <button class="btn">7</button>
+        <button class="btn">8</button>
+        <button class="btn">9</button>
+        <button class="operator">x</button>
 
-                  <!-- row 4 -->
-                <button class="decimal" id="decimal">.</button>
-                <button class="btn">0</button>
-                <button class="evaluate" id="evaluate">=</button>
-                <button class="operator">/</button>
-
-
-            </div> 
-    
+        <!-- row 4 -->
+        <button class="decimal" id="decimal">.</button>
+        <button class="btn">0</button>
+        <button class="evaluate" id="evaluate">=</button>
+        <button class="operator">/</button>
+      </div>
     </div>
-</body>
+  </body>
 </html>
