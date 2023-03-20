@@ -12,9 +12,11 @@ Created for [The Odin Project](https://www.theodinproject.com/lessons/foundation
 </div>
 <br>
 <h3>Showcase:</h3>
-![](./giphy.gif)
+
+![](https://github.com/rib9985/calculator/blob/main/giphy.gif)
 
 <h3>What I learned</h3>
+
  - Event listeners, what are them and how use them correctly
  - Arrays and objects. Ex: the number buttons are passed on to an array, and the method iterates over them since they store more information.
  - Grasping the concept of passing information to and from functions, returning them
@@ -23,8 +25,11 @@ Created for [The Odin Project](https://www.theodinproject.com/lessons/foundation
 <br>
 
 <h3>Principles used</h3>
+
  - Clean and understandable code
  - Function callbacks and parameter usage
  - Good variable, classes, and ID names
 <br>
-[Live Demo Here](insert link later)
+
+
+[Live Demo Here](https://rib9985.github.io/calculator/)
